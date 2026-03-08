@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renewi â Gebruikers overzicht</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,sans-serif;background:#ffffff;color:#1a1a1a;line-height:1.6}
+
+/* Sidebar */
+.sidebar{position:fixed;top:0;left:0;width:240px;height:100vh;background:#f7f7f7;border-right:1px solid #e5e5e5;display:flex;flex-direction:column;z-index:100;overflow-y:auto}
+.sidebar-logo{padding:24px 20px 28px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #e5e5e5}
+.sidebar-logo .logo-text{font-size:22px;font-weight:700;color:#333;letter-spacing:0.5px;text-transform:lowercase}
+.sidebar-nav{flex:1;padding:12px 0}
+.sidebar-nav a{display:flex;align-items:center;padding:10px 20px;color:#333;text-decoration:none;font-size:14px;border-left:3px solid transparent;transition:all 0.2s ease}
+.sidebar-nav a:hover{background:#ebebeb}
+.sidebar-nav a.active{background:#efefef;color:#1a1a1a;font-weight:600;border-left:3px solid #f5820d}
+
+/* Main layout */
+.main-content{margin-left:240px;min-height:100vh}
+.page-header{background:#fff;padding:20px 32px;border-bottom:1px solid #e5e5e5}
+.page-header h1{font-size:22px;font-weight:600;color:#1a1a1a}
+.page-header .subtitle{font-size:13px;color:#888;margin-top:2px}
+.content-area{padding:24px 32px}
+
+/* Toolbar */
+.toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:12px;flex-wrap:wrap}
+.toolbar-left{display:flex;align-items:center;gap:8px}
+.toolbar-right{display:flex;align-items:center;gap:8px}
+
+.search-box{display:flex;align-items:center;background:#fff;border:1px solid #d5d5d5;border-radius:6px;padding:0 12px;height:36px;min-width:240px}
+.search-box svg{width:16px;height:16px;color:#999;flex-shrink:0}
+.search-box input{border:none;outline:none;font-size:13px;padding:0 8px;width:100%;background:transparent;color:#1a1a1a}
+.search-box input::placeholder{color:#aaa}
+
+.btn{display:inline-flex;align-items:center;gap:6px;padding:0 14px;height:36px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid #d5d5d5;background:#fff;color:#333;transition:background 0.15s}
+.btn:hover{background:#f5f5f5}
+.btn-orange{background:#f5820d;color:#fff;border-color:#f5820d}
+.btn-orange:hover{background:#e0750b}
+.btn svg{width:14px;height:14px}
+
+/* Table */
+.table-card{background:#fff;border:1px solid #e5e5e5;border-radius:10px;overflow:hidden}
+table{width:100%;border-collapse:collapse}
+thead{background:#fafafa}
+thead th{padding:10px 14px;font-size:12px;font-weight:600;color:#666;text-align:left;border-bottom:1px solid #e5e5e5;white-space:nowrap;text-transform:uppercase;letter-spacing:0.3px}
+tbody td{padding:10px 14px;font-size:13px;color:#333;border-bottom:1px solid #f0f0f0;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#fafafa}
+
+/* Status badge */
+.status-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#22c55e;color:#fff;font-size:12px;font-weight:700;line-height:1}
+
+/* Rol pill */
+.rol-pill{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:500;background:#f3f4f6;color:#555;border:1px solid #e5e5e5}
+
+/* Action buttons */
+.action-btns{display:flex;gap:4px}
+.action-btn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:5px;border:1px solid #e0e0e0;background:#fafafa;cursor:pointer;color:#666;transition:background 0.15s}
+.action-btn:hover{background:#eee}
+.action-btn svg{width:14px;height:14px}
+
+/* Pagination */
+.pagination{display:flex;align-items:center;justify-content:flex-end;padding:14px 20px;gap:4px}
+.page-btn{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 8px;border-radius:6px;border:1px solid #e0e0e0;background:#fff;color:#333;font-size:13px;cursor:pointer;transition:background 0.15s}
+.page-btn:hover{background:#f5f5f5}
+.page-btn.active{background:#f5820d;color:#fff;border-color:#f5820d}
+.page-btn.disabled{opacity:0.4;cursor:default}
+.page-btn.disabled:hover{background:#fff}
+</style>
+</head>
+<body>
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <img src="renewi-logo.svg" alt="Renewi" style="height:96px;width:auto">
+  </div>
+  <div class="sidebar-nav">
+    <a href="index.html">Dashboard</a>
+    <a href="container-overzicht.html">Container overzicht</a>
+    <a href="geleegd-vandaag.html">Vandaag geleegd</a>
+    <a href="probleemcontainers.html">Probleemcontainers</a>
+    <a href="laatste-activiteit.html">Laatste activiteit</a>
+    <a href="container-activiteit.html">Container activiteit</a>
+    <a href="gebruikers.html" class="active">Gebruikers</a>
+  </div>
+</nav>
+
+<div class="main-content">
+  <div class="page-header">
+    <h1>Gebruikers</h1>
+    <div class="subtitle">Showing 1 to 10 of 1,189 entries</div>
+  </div>
+  <div class="content-area">
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <button class="btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h6"/></svg>
+          Columns
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <button class="btn">Reset columns</button>
+      </div>
+      <div class="toolbar-right">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="text" id="searchInput" placeholder="Zoeken..." oninput="filterTable()">
+        </div>
+        <button class="btn btn-orange">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          Nieuw
+        </button>
+      </div>
+    </div>
+
+    <div class="table-card">
+      <table id="usersTable">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Gebruikersnaam</th>
+            <th>E-mail</th>
+            <th>Laatste login</th>
+            <th>Aangemaakt</th>
+            <th>Rol</th>
+            <th>Max Keys</th>
+            <th>Acties</th>
+          </tr>
+        </thead>
+        <tbody id="usersBody">
+          <tr>
+            <td><span class="status-badge">â</span></td>
+            <td>Jan de Vries</td>
+            <td>j.devries@renewi.com</td>
+            <td>05-03-2026 09:15</td>
+            <td>01-01-2026 08:00</td>
+            <td><span class="rol-pill">App manager</span></td>
+            <td>N/A</td>
+            <td>
+              <div class="action-btns">
+                <button class="action-btn" title="Bekijk profiel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+                <button class="action-btn" title="Bewerken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="status-badge">â</span></td>
+            <td>Maria Jansen</td>
+            <td>m.jansen@renewi.com</td>
+            <td>05-03-2026 08:42</td>
+            <td>15-01-2026 09:00</td>
+            <td><span class="rol-pill">Guest manager</span></td>
+            <td>25</td>
+            <td>
+              <div class="action-btns">
+                <button class="action-btn" title="Bekijk profiel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+                <button class="action-btn" title="Bewerken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="status-badge">â</span></td>
+            <td>Peter Bakker</td>
+            <td>p.bakker@renewi.com</td>
+            <td>04-03-2026 17:30</td>
+            <td>20-01-2026 10:00</td>
+            <td><span class="rol-pill">Guest manager</span></td>
+            <td>10</td>
+            <td>
+              <div class="action-btns">
+                <button class="action-btn" title="Bekijk profiel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+                <button class="action-btn" title="Bewerken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="status-badge">â</span></td>
+            <td>Sophie van Dam</td>
+            <td>s.vandam@renewi.com</td>
+            <td>04-03-2026 14:20</td>
+            <td>01-02-2026 11:00</td>
+            <td><span class="rol-pill">Account manager</span></td>
+            <td>N/A</td>
+            <td>
+              <div class="action-btns">
+                <button class="action-btn" title="Bekijk profiel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+                <button class="action-btn" title="Bewerken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="status-badge">â</span></td>
+            <td>Thomas Smit</td>
+            <td>t.smit@renewi.com</td>
+            <td>03-03-2026 16:45</td>
+            <td>05-02-2026 09:30</td>
+            <td><span class="rol-pill">App manager</span></td>
+            <td>N/A</td>
+            <td>
+              <div class="action-btns">
+                <button class="action-btn" title="Bekijk profiel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+                <button class="action-btn" title="Bewerken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="status-badge">â</span></td>
+            <td>Lisa Mulder</td>
+            <td>l.mulder@renewi.com</td>
+            <td>03-03-2026 11:10</td>
+            <td>10-02-2026 08:45</td>
+            <td><span class="rol-pill">Guest manager</span></td>
+            <td>5</td>
+            <td>
+              <div class="action-btns">
+                <button class="action-btn" title="Bekijk profiel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+                <button class="action-btn" title="Bewerken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="status-badge">â</span></td>
+            <td>Kevin Visser</td>
+            <td>k.visser@renewi.com</td>
+            <td>02-03-2026 15:55</td>
+            <td>15-02-2026 10:15</td>
+            <td><span class="rol-pill">App editor</span></td>
+            <td>N/A</td>
+            <td>
+              <div class="action-btns">
+                <button class="action-btn" title="Bekijk profiel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+                <button class="action-btn" title="Bewerken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="status-badge">â</span></td>
+            <td>Emma Dekker</td>
+            <td>e.dekker@renewi.com</td>
+            <td>02-03-2026 10:30</td>
+            <td>20-02-2026 09:00</td>
+            <td><span class="rol-pill">Company</span></td>
+            <td>N/A</td>
+            <td>
+              <div class="action-btns">
+                <button class="action-btn" title="Bekijk profiel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+                <button class="action-btn" title="Bewerken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="status-badge">â</span></td>
+            <td>Bas Hendriks</td>
+            <td>b.hendriks@renewi.com</td>
+            <td>01-03-2026 14:20</td>
+            <td>25-02-2026 11:30</td>
+            <td><span class="rol-pill">Guest manager</span></td>
+            <td>10</td>
+            <td>
+              <div class="action-btns">
+                <button class="action-btn" title="Bekijk profiel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+                <button class="action-btn" title="Bewerken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="status-badge">â</span></td>
+            <td>Iris Peters</td>
+            <td>i.peters@renewi.com</td>
+            <td>28-02-2026 09:45</td>
+            <td>01-03-2026 08:00</td>
+            <td><span class="rol-pill">App manager</span></td>
+            <td>N/A</td>
+            <td>
+              <div class="action-btns">
+                <button class="action-btn" title="Bekijk profiel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+                <button class="action-btn" title="Bewerken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <button class="page-btn disabled">â</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">â</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function filterTable() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  const rows = document.querySelectorAll('#usersBody tr');
+  rows.forEach(row => {
+    const username = row.cells[1].textContent.toLowerCase();
+    row.style.display = username.includes(query) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
