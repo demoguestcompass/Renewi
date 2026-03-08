@@ -115,13 +115,14 @@ table tbody tr:hover{background:#fafafa}
 
 <div class="grid-2">
 <div class="card">
-<div class="section-title">Openingen per dag (overzicht)</div>
-<div class="chart-container-sm"><canvas id="daily30SmallChart"></canvas></div>
+<div class="section-title">Trend ledigingen (laatste 12 weken)</div>
+<div class="chart-container-sm"><canvas id="trendChart"></canvas></div>
 </div>
 <div class="card">
 <div class="section-title">Dagelijks overzicht</div>
+<div class="table-container">
 <table>
-<thead><tr><th>Dag</th><th>Containers geopend</th></tr></thead>
+<thead><tr><th>Dag</th><th>Openingen</th></tr></thead>
 <tbody>
 <tr><td>Maandag</td><td>120</td></tr>
 <tr><td>Dinsdag</td><td>140</td></tr>
@@ -138,12 +139,16 @@ table tbody tr:hover{background:#fafafa}
 </div>
 </div>
 <script>
-const dailyLabels=[];const dailyData=[];for(let i=30;i>=1;i--){const d=new Date();d.setDate(d.getDate()-i);dailyLabels.push(d.getDate()+'/'+(d.getMonth()+1));dailyData.push(Math.floor(Math.random()*60)+90);}
-new Chart(document.getElementById('daily30Chart'),{type:'bar',data:{labels:dailyLabels,datasets:[{label:'Openingen',data:dailyData,backgroundColor:'#f5820d',borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#f0f0f0'}},x:{grid:{display:false},ticks:{maxTicksLimit:10,font:{size:10}}}}}});
+// 1. Openingen per dag - lighter blue-grey bar chart with thinner bars
+const dailyLabels=[];const dailyData=[];
+for(let i=30;i>=1;i--){const d=new Date();d.setDate(d.getDate()-i);dailyLabels.push(d.getDate()+'/'+(d.getMonth()+1));dailyData.push(Math.floor(Math.random()*60)+90);}
+new Chart(document.getElementById('daily30Chart'),{type:'bar',data:{labels:dailyLabels,datasets:[{label:'Openingen',data:dailyData,backgroundColor:'#7BA7C4',borderRadius:3,barPercentage:0.5,categoryPercentage:0.7}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#f0f0f0'},ticks:{font:{size:11}}},x:{grid:{display:false},ticks:{maxTicksLimit:10,font:{size:10}}}}}});
 
-new Chart(document.getElementById('regionChart'),{type:'bar',data:{labels:['Zuid','West','Noord','Oost'],datasets:[{label:'Openingen',data:[1350,1300,1200,1100],backgroundColor:['#f5820d','#f79a3e','#f9b26e','#fbca9e'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#f0f0f0'}},x:{grid:{display:false}}}}});
+// 2. Openingen per regio - doughnut chart
+new Chart(document.getElementById('regionChart'),{type:'doughnut',data:{labels:['Zuid','West','Noord','Oost'],datasets:[{data:[1350,1300,1200,1100],backgroundColor:['#f5820d','#4CAF50','#2196F3','#9C27B0'],borderWidth:2,borderColor:'#fff',hoverOffset:8}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{display:true,position:'bottom',labels:{padding:16,usePointStyle:true,pointStyle:'circle',font:{size:12}}},tooltip:{callbacks:{label:function(ctx){const total=ctx.dataset.data.reduce((a,b)=>a+b,0);const pct=Math.round(ctx.raw/total*100);return ctx.label+': '+ctx.raw.toLocaleString()+' ('+pct+'%)';}}}}}});
 
-new Chart(document.getElementById('daily30SmallChart'),{type:'bar',data:{labels:dailyLabels,datasets:[{label:'Openingen',data:dailyData.map(v=>v-Math.floor(Math.random()*10)),backgroundColor:'#f5820d',borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#f0f0f0'}},x:{grid:{display:false},ticks:{maxTicksLimit:8,font:{size:9}}}}}});
+// 3. Trend ledigingen - line chart with fill
+new Chart(document.getElementById('trendChart'),{type:'line',data:{labels:['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7','Week 8','Week 9','Week 10','Week 11','Week 12'],datasets:[{label:'Gemiddelde ledigingen per dag',data:[98,112,105,128,119,134,142,138,125,148,152,145],borderColor:'#f5820d',backgroundColor:'rgba(245,130,13,0.1)',fill:true,tension:0.4,pointBackgroundColor:'#f5820d',pointBorderColor:'#fff',pointBorderWidth:2,pointRadius:4,pointHoverRadius:6,borderWidth:2.5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'bottom',labels:{padding:16,usePointStyle:true,pointStyle:'circle',font:{size:12}}}},scales:{y:{beginAtZero:false,grid:{color:'#f0f0f0'},ticks:{font:{size:11}}},x:{grid:{display:false},ticks:{font:{size:10}}}}}});
 </script>
 <script>
 </script>
