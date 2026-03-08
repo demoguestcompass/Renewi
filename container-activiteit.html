@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renewi â Container activiteit</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;color:#1a2332;line-height:1.6}
+.header{background:#fff;padding:20px 32px;border-bottom:1px solid #e0e3e8;display:flex;align-items:center;gap:16px}
+.header h1{font-size:22px;color:#1a2332;font-weight:700}
+.header .logo{font-size:14px;color:#6b8cba;font-weight:600;text-transform:uppercase;letter-spacing:1px}
+.container{max-width:1200px;margin:24px auto;padding:0 24px}
+.breadcrumb{font-size:13px;color:#6b7a8d;margin-bottom:20px}
+.breadcrumb a{color:#6b8cba;text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.card{background:#fff;border-radius:10px;padding:24px;box-shadow:0 1px 4px rgba(0,0,0,0.06);margin-bottom:24px}
+.section-title{font-size:16px;font-weight:700;color:#1a2332;margin-bottom:12px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.chart-container{position:relative;height:250px}
+.chart-container-sm{position:relative;height:180px}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:12px;color:#6b7a8d;font-weight:600;padding:10px 12px;border-bottom:2px solid #e0e3e8;text-transform:uppercase;letter-spacing:0.5px}
+td{padding:10px 12px;border-bottom:1px solid #f0f2f5;font-size:14px}
+@media(max-width:768px){.grid-2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo">Renewi</div>
+<h1>Container activiteit</h1>
+</div>
+<div class="container">
+<div class="breadcrumb"><a href="index.html">Dashboard</a> &rsaquo; Container activiteit</div>
+
+<div class="grid-2">
+<div class="card">
+<div class="section-title">Openingen per dag (laatste 30 dagen)</div>
+<div class="chart-container"><canvas id="daily30Chart"></canvas></div>
+</div>
+<div class="card">
+<div class="section-title">Openingen per regio</div>
+<div class="chart-container"><canvas id="regionChart"></canvas></div>
+</div>
+</div>
+
+<div class="grid-2">
+<div class="card">
+<div class="section-title">Openingen per dag (overzicht)</div>
+<div class="chart-container-sm"><canvas id="daily30SmallChart"></canvas></div>
+</div>
+<div class="card">
+<div class="section-title">Dagelijks overzicht</div>
+<table>
+<thead><tr><th>Dag</th><th>Containers geopend</th></tr></thead>
+<tbody>
+<tr><td>Maandag</td><td>120</td></tr>
+<tr><td>Dinsdag</td><td>140</td></tr>
+<tr><td>Woensdag</td><td>135</td></tr>
+<tr><td>Donderdag</td><td>128</td></tr>
+<tr><td>Vrijdag</td><td>145</td></tr>
+<tr><td>Zaterdag</td><td>98</td></tr>
+<tr><td>Zondag</td><td>72</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<script>
+const dailyLabels=[];const dailyData=[];for(let i=30;i>=1;i--){const d=new Date();d.setDate(d.getDate()-i);dailyLabels.push(d.getDate()+'/'+(d.getMonth()+1));dailyData.push(Math.floor(Math.random()*60)+90);}
+new Chart(document.getElementById('daily30Chart'),{type:'bar',data:{labels:dailyLabels,datasets:[{label:'Openingen',data:dailyData,backgroundColor:'#6b8cba',borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#f0f2f5'}},x:{grid:{display:false},ticks:{maxTicksLimit:10,font:{size:10}}}}}});
+
+new Chart(document.getElementById('regionChart'),{type:'bar',data:{labels:['Zuid','West','Noord','Oost'],datasets:[{label:'Openingen',data:[1350,1300,1200,1100],backgroundColor:['#6b8cba','#8ba4c8','#a0b8d4','#b5cce0'],borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#f0f2f5'}},x:{grid:{display:false}}}}});
+
+new Chart(document.getElementById('daily30SmallChart'),{type:'bar',data:{labels:dailyLabels,datasets:[{label:'Openingen',data:dailyData.map(v=>v-Math.floor(Math.random()*10)),backgroundColor:'#6b8cba',borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#f0f2f5'}},x:{grid:{display:false},ticks:{maxTicksLimit:8,font:{size:9}}}}}});
+</script>
+</body>
+</html>
