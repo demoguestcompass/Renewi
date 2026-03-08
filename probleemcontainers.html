@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renewi â Probleemcontainers</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;color:#1a2332;line-height:1.6}
+.header{background:#fff;padding:20px 32px;border-bottom:1px solid #e0e3e8;display:flex;align-items:center;gap:16px}
+.header h1{font-size:22px;color:#1a2332;font-weight:700}
+.header .logo{font-size:14px;color:#6b8cba;font-weight:600;text-transform:uppercase;letter-spacing:1px}
+.container{max-width:1200px;margin:24px auto;padding:0 24px}
+.breadcrumb{font-size:13px;color:#6b7a8d;margin-bottom:20px}
+.breadcrumb a{color:#6b8cba;text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.card{background:#fff;border-radius:10px;padding:24px;box-shadow:0 1px 4px rgba(0,0,0,0.06);margin-bottom:24px}
+.section-title{font-size:16px;font-weight:700;color:#1a2332;margin-bottom:12px}
+.filter-bar{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.filter-bar select{padding:8px 14px;border:1px solid #d0d5dd;border-radius:8px;font-size:13px;color:#1a2332;background:#fff;cursor:pointer}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:12px;color:#6b7a8d;font-weight:600;padding:10px 12px;border-bottom:2px solid #e0e3e8;text-transform:uppercase;letter-spacing:0.5px}
+td{padding:10px 12px;border-bottom:1px solid #f0f2f5;font-size:14px}
+.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.badge-orange{background:#fff3e0;color:#e67e22}
+.badge-red{background:#fce4ec;color:#e74c3c}
+a.container-link{color:#6b8cba;text-decoration:none;font-weight:600}
+a.container-link:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo">Renewi</div>
+<h1>Probleemcontainers</h1>
+</div>
+<div class="container">
+<div class="breadcrumb"><a href="index.html">Dashboard</a> &rsaquo; Probleemcontainers</div>
+
+<div class="card">
+<div class="section-title">Containers met problemen</div>
+<div class="filter-bar">
+<select><option>Alle regio's</option><option>Amsterdam</option><option>Rotterdam</option><option>Utrecht</option><option>Den Haag</option></select>
+<select><option>Dagen sinds laatste lediging: 3+</option><option>3+ dagen</option><option>5+ dagen</option><option>7+ dagen</option></select>
+</div>
+<table>
+<thead><tr><th>Container</th><th>Locatie</th><th>Laatst geopend</th><th>Persoon</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td><a href="container-activiteit.html" class="container-link">C-204</a></td><td>Utrecht Centrum</td><td>3 dagen geleden</td><td>004</td><td><span class="badge badge-orange">Waarschuwing</span></td></tr>
+<tr><td><a href="container-activiteit.html" class="container-link">C-118</a></td><td>Rotterdam Noord</td><td>4 dagen geleden</td><td>567</td><td><span class="badge badge-red">Achterstallig</span></td></tr>
+<tr><td><a href="container-activiteit.html" class="container-link">C-332</a></td><td>Den Haag</td><td>5 dagen geleden</td><td>Lokaal personeel</td><td><span class="badge badge-red">Achterstallig</span></td></tr>
+<tr><td><a href="container-activiteit.html" class="container-link">C-401</a></td><td>Tilburg</td><td>4 dagen geleden</td><td>Truck 11</td><td><span class="badge badge-orange">Waarschuwing</span></td></tr>
+<tr><td><a href="container-activiteit.html" class="container-link">C-289</a></td><td>Breda</td><td>5 dagen geleden</td><td>Truck 6</td><td><span class="badge badge-red">Achterstallig</span></td></tr>
+<tr><td><a href="container-activiteit.html" class="container-link">C-177</a></td><td>Arnhem</td><td>3 dagen geleden</td><td>Truck 2</td><td><span class="badge badge-orange">Waarschuwing</span></td></tr>
+<tr><td><a href="container-activiteit.html" class="container-link">C-450</a></td><td>Groningen</td><td>6 dagen geleden</td><td>Truck 14</td><td><span class="badge badge-red">Achterstallig</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</body>
+</html>
