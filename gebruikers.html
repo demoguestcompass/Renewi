@@ -320,13 +320,7 @@ tbody tr:hover{background:#fafafa}
           </tr>
         </tbody>
       </table>
-      <div class="pagination">
-        <button class="page-btn disabled">â</button>
-        <button class="page-btn active">1</button>
-        <button class="page-btn">2</button>
-        <button class="page-btn">3</button>
-        <button class="page-btn">â</button>
-      </div>
+      <div class="pagination" id="pagination"></div>
     </div>
     <!-- Laatste wijzigingen -->
     <div class="wijzigingen-section">
@@ -372,7 +366,7 @@ tbody tr:hover{background:#fafafa}
             <tr>
               <td style="padding:12px 16px;font-size:13px;color:#555">28-02-2026 16:45</td>
               <td style="padding:12px 16px;font-size:13px;font-weight:500">R. van Dijk</td>
-              <td style="padding:12px 16px"><span class="wijzig-badge beeindigd">BeÃ«indigd</span></td>
+              <td style="padding:12px 16px"><span class="wijzig-badge beeindigd">Beeindigd</span></td>
               <td style="padding:12px 16px;font-size:13px;color:#555">Account gedeactiveerd</td>
             </tr>
           </tbody>
@@ -391,6 +385,28 @@ function filterTable() {
     row.style.display = username.includes(query) ? '' : 'none';
   });
 }
+</script>
+
+<script>
+(function() {
+  var pg = document.getElementById('pagination');
+  var prev = document.createElement('button');
+  prev.className = 'page-btn disabled';
+  prev.textContent = 'Vorige';
+  pg.appendChild(prev);
+
+  [1,2,3].forEach(function(n) {
+    var btn = document.createElement('button');
+    btn.className = 'page-btn' + (n===1 ? ' active' : '');
+    btn.textContent = String(n);
+    pg.appendChild(btn);
+  });
+
+  var next = document.createElement('button');
+  next.className = 'page-btn';
+  next.textContent = 'Volgende';
+  pg.appendChild(next);
+})();
 </script>
 </body>
 </html>
