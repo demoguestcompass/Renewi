@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Renewi â Probleemcontainers</title>
+<title>Renewi Ã¢ÂÂ Probleemcontainers</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;color:#1a2332;line-height:1.6}
@@ -26,11 +26,48 @@ td{padding:10px 12px;border-bottom:1px solid #f0f2f5;font-size:14px}
 .badge-red{background:#fce4ec;color:#e74c3c}
 a.container-link{color:#6b8cba;text-decoration:none;font-weight:600}
 a.container-link:hover{text-decoration:underline}
+
+/* Sidebar */
+.sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:#1a2332;color:#fff;display:flex;flex-direction:column;z-index:100;overflow-y:auto}
+.sidebar-logo{padding:24px 20px 20px;font-size:18px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6b8cba;border-bottom:1px solid rgba(255,255,255,0.08)}
+.sidebar-nav{flex:1;padding:12px 0}
+.sidebar-nav a{display:flex;align-items:center;gap:10px;padding:10px 20px;color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px;transition:all 0.2s ease}
+.sidebar-nav a:hover{background:rgba(255,255,255,0.08);color:#fff}
+.sidebar-nav a.active{background:rgba(255,255,255,0.12);color:#fff;font-weight:700}
+.sidebar-nav .nav-icon{font-size:16px;width:22px;text-align:center}
+.sidebar-toggle{display:none;position:fixed;top:12px;left:12px;z-index:200;background:#1a2332;color:#fff;border:none;border-radius:6px;padding:8px 12px;font-size:18px;cursor:pointer}
+/* Main layout */
+.main-wrap{margin-left:220px;min-height:100vh}
+/* Table hover */
+table tbody tr{transition:background 0.15s ease}
+table tbody tr:hover{background:#f0f4f8}
+/* Responsive */
+@media(max-width:900px){
+.sidebar{transform:translateX(-100%);transition:transform 0.3s ease}
+.sidebar.open{transform:translateX(0)}
+.sidebar-toggle{display:block}
+.main-wrap{margin-left:0}
+}
 </style>
 </head>
 <body>
+<button class="sidebar-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
+<nav class="sidebar">
+<div class="sidebar-logo">RENEWI</div>
+<div class="sidebar-nav">
+<a href="index.html"><span class="nav-icon">ð</span>Dashboard</a>
+<a href="container-overzicht.html"><span class="nav-icon">ð¦</span>Container overzicht</a>
+<a href="geleegd-vandaag.html"><span class="nav-icon">ðï¸</span>Vandaag geleegd</a>
+<a href="probleemcontainers.html" class="active"><span class="nav-icon">â ï¸</span>Probleemcontainers</a>
+<a href="laatste-activiteit.html"><span class="nav-icon">ð</span>Laatste activiteit</a>
+<a href="container-activiteit.html"><span class="nav-icon">ð</span>Container activiteit</a>
+</div>
+</nav>
+<div class="main-wrap">
 <div class="header">
-<div class="logo">Renewi</div>
+<h1>Probleemcontainers</h1>
+</div>
+
 <h1>Probleemcontainers</h1>
 </div>
 <div class="container">
@@ -39,8 +76,16 @@ a.container-link:hover{text-decoration:underline}
 <div class="card">
 <div class="section-title">Containers met problemen</div>
 <div class="filter-bar">
-<select><option>Alle regio's</option><option>Amsterdam</option><option>Rotterdam</option><option>Utrecht</option><option>Den Haag</option></select>
-<select><option>Dagen sinds laatste lediging: 3+</option><option>3+ dagen</option><option>5+ dagen</option><option>7+ dagen</option></select>
+<select id="filterRegionPC" onchange="applyFiltersPC()">
+<option value="All">Alle regio's</option>
+<option value="Utrecht Centrum">Utrecht Centrum</option>
+<option value="Rotterdam Noord">Rotterdam Noord</option>
+</select>
+<select id="filterDaysPC" onchange="applyFiltersPC()">
+<option value="All">Dagen sinds lediging</option>
+<option value="3">3+ dagen</option>
+<option value="4">4+ dagen</option>
+</select>
 </div>
 <table>
 <thead><tr><th>Container</th><th>Locatie</th><th>Laatst geopend</th><th>Persoon</th><th>Status</th></tr></thead>
@@ -56,5 +101,29 @@ a.container-link:hover{text-decoration:underline}
 </table>
 </div>
 </div>
+
+</div>
+
+<script>
+
+function applyFiltersPC(){
+  var region=document.getElementById('filterRegionPC').value;
+  var days=document.getElementById('filterDaysPC').value;
+  var rows=document.querySelectorAll('table tbody tr');
+  rows.forEach(function(row){
+    var cells=row.querySelectorAll('td');
+    if(cells.length<5)return;
+    var rowRegion=cells[1].textContent.trim();
+    var rowDaysText=cells[2].textContent.trim();
+    var dayMatch=rowDaysText.match(/(\d+)/);
+    var rowDays=dayMatch?parseInt(dayMatch[1]):0;
+    var showRegion=region==='All'||rowRegion===region;
+    var showDays=true;
+    if(days!=='All'){showDays=rowDays>=parseInt(days);}
+    row.style.display=(showRegion&&showDays)?'':'none';
+  });
+}
+document.addEventListener('click',function(e){var s=document.querySelector('.sidebar'),t=document.querySelector('.sidebar-toggle');if(s&&s.classList.contains('open')&&!s.contains(e.target)&&e.target!==t){s.classList.remove('open');}});
+</script>
 </body>
 </html>
