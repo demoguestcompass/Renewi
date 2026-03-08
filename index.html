@@ -3,169 +3,203 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Renewi Ã¢ÂÂ Container Operations Dashboard</title>
+<title>Renewi â Container Operations Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f0f2f5;color:#1a2332;line-height:1.6}
-.header{background:#fff;padding:20px 32px;border-bottom:1px solid #e0e3e8;display:flex;align-items:center;gap:16px}
-.header h1{font-size:22px;color:#1a2332;font-weight:700}
-.header .logo{font-size:14px;color:#6b8cba;font-weight:600;text-transform:uppercase;letter-spacing:1px}
-.container{max-width:1200px;margin:24px auto;padding:0 24px}
-.breadcrumb{font-size:13px;color:#6b8cba;margin-bottom:20px}
-.breadcrumb a{color:#6b8cba;text-decoration:none}
-.breadcrumb a:hover{text-decoration:underline}
-.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
-.kpi-card{background:#fff;border-radius:10px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,0.06);position:relative}
-.kpi-card .label{font-size:13px;color:#6b7a8d;margin-bottom:6px}
-.kpi-card .value{font-size:28px;font-weight:700;color:#1a2332}
-.kpi-card .sub{font-size:12px;color:#6b7a8d;margin-top:4px}
-.kpi-card .sub .up{color:#27ae60}
-.kpi-card .arrow-btn{position:absolute;top:16px;right:16px;width:32px;height:32px;background:#1a2332;color:#fff;border:none;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;text-decoration:none}
-.kpi-card .arrow-btn:hover{background:#2c3e50}
-.section-title{font-size:16px;font-weight:700;color:#1a2332;margin-bottom:12px}
-.card{background:#fff;border-radius:10px;padding:24px;box-shadow:0 1px 4px rgba(0,0,0,0.06);margin-bottom:24px}
-table{width:100%;border-collapse:collapse}
-th{text-align:left;font-size:12px;color:#6b7a8d;font-weight:600;padding:10px 12px;border-bottom:2px solid #e0e3e8;text-transform:uppercase;letter-spacing:0.5px}
-td{padding:10px 12px;border-bottom:1px solid #f0f2f5;font-size:14px}
-.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600}
-.badge-green{background:#e8f5e9;color:#27ae60}
-.badge-orange{background:#fff3e0;color:#e67e22}
-.badge-red{background:#fce4ec;color:#e74c3c}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.chart-container{position:relative;height:220px}
-a.container-link{color:#6b8cba;text-decoration:none;font-weight:600}
-a.container-link:hover{text-decoration:underline}
-@media(max-width:768px){.kpi-row{grid-template-columns:repeat(2,1fr)}.grid-2{grid-template-columns:1fr}}
+body{font-family:system-ui,-apple-system,sans-serif;background:#ffffff;color:#1a1a1a;line-height:1.6}
 
 /* Sidebar */
-.sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:#1a2332;color:#fff;display:flex;flex-direction:column;z-index:100;overflow-y:auto}
-.sidebar-logo{padding:24px 20px 20px;font-size:18px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6b8cba;border-bottom:1px solid rgba(255,255,255,0.08)}
+.sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:#f7f7f7;border-right:1px solid #e5e5e5;display:flex;flex-direction:column;z-index:100;overflow-y:auto}
+.sidebar-logo{padding:20px 20px 24px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #e5e5e5}
+.sidebar-logo .logo-text{font-size:22px;font-weight:700;color:#333;letter-spacing:0.5px;text-transform:lowercase}
 .sidebar-nav{flex:1;padding:12px 0}
-.sidebar-nav a{display:flex;align-items:center;gap:10px;padding:10px 20px;color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px;transition:all 0.2s ease}
-.sidebar-nav a:hover{background:rgba(255,255,255,0.08);color:#fff}
-.sidebar-nav a.active{background:rgba(255,255,255,0.12);color:#fff;font-weight:700}
-.sidebar-nav .nav-icon{font-size:16px;width:22px;text-align:center}
-.sidebar-toggle{display:none;position:fixed;top:12px;left:12px;z-index:200;background:#1a2332;color:#fff;border:none;border-radius:6px;padding:8px 12px;font-size:18px;cursor:pointer}
+.sidebar-nav a{display:flex;align-items:center;padding:10px 20px;color:#333;text-decoration:none;font-size:14px;border-left:3px solid transparent;transition:all 0.2s ease}
+.sidebar-nav a:hover{background:#ebebeb}
+.sidebar-nav a.active{background:#efefef;color:#1a1a1a;font-weight:600;border-left:3px solid #f5820d}
+
 /* Main layout */
-.main-wrap{margin-left:220px;min-height:100vh}
-/* Table hover */
+.main-content{margin-left:220px;min-height:100vh}
+.page-header{background:#fff;padding:20px 32px;border-bottom:1px solid #e5e5e5}
+.page-header h1{font-size:22px;font-weight:600;color:#1a1a1a}
+.content-area{max-width:1200px;margin:24px auto;padding:0 24px}
+
+.breadcrumb{font-size:13px;color:#888;margin-bottom:20px}
+.breadcrumb a{color:#888;text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+
+/* KPI Cards */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi-card{border-radius:10px;padding:20px 24px;border:1px solid #e5e5e5;position:relative}
+.kpi-green{background:#e8f5e9}
+.kpi-blue{background:#e3f2fd}
+.kpi-purple{background:#f3e5f5}
+.kpi-peach{background:#fff3e0}
+.kpi-card .label{font-size:13px;color:#555;margin-bottom:6px}
+.kpi-card .value{font-size:28px;font-weight:700;color:#1a1a1a}
+.kpi-card .sub{font-size:12px;color:#666;margin-top:4px}
+.kpi-card .sub .up{color:#27ae60}
+.kpi-card .icon-box{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.kpi-green .icon-box{background:#c8e6c9}
+.kpi-blue .icon-box{background:#bbdefb}
+.kpi-purple .icon-box{background:#e1bee7}
+.kpi-peach .icon-box{background:#ffe0b2}
+
+/* Section */
+.section-title{font-size:16px;font-weight:700;color:#1a1a1a;margin-bottom:12px}
+
+/* Cards */
+.card{background:#fff;border-radius:10px;padding:24px;border:1px solid #e5e5e5;margin-bottom:24px}
+
+/* Tables */
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:12px;color:#888;font-weight:600;padding:10px 12px;background:#f5f5f5;border-bottom:2px solid #eee;text-transform:uppercase;letter-spacing:0.5px}
+td{padding:10px 12px;border-bottom:1px solid #eee;font-size:14px}
 table tbody tr{transition:background 0.15s ease}
-table tbody tr:hover{background:#f0f4f8}
+table tbody tr:hover{background:#fafafa}
+
+/* Badges */
+.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.badge-ok{background:#e8f5e9;color:#2e7d32}
+.badge-warning{background:#fff3e0;color:#e65100}
+.badge-overdue{background:#fdecea;color:#c62828}
+.badge-green{background:#e8f5e9;color:#2e7d32}
+.badge-orange{background:#fff3e0;color:#e65100}
+.badge-red{background:#fdecea;color:#c62828}
+
+/* Links */
+a.container-link{color:#f5820d;text-decoration:none;font-weight:600}
+a.container-link:hover{text-decoration:underline}
+
+/* Grid */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+
+/* Chart */
+.chart-container{position:relative;height:220px}
+
+/* Buttons */
+.btn-primary{background:#fff;border:2px solid #f5820d;color:#f5820d;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:600}
+
 /* Responsive */
 @media(max-width:900px){
-.sidebar{transform:translateX(-100%);transition:transform 0.3s ease}
-.sidebar.open{transform:translateX(0)}
-.sidebar-toggle{display:block}
-.main-wrap{margin-left:0}
+  .sidebar{display:none}
+  .main-content{margin-left:0}
+}
+@media(max-width:768px){
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+  .grid-2{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
-<button class="sidebar-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
 <nav class="sidebar">
-<div class="sidebar-logo">RENEWI</div>
-<div class="sidebar-nav">
-<a href="index.html" class="active"><span class="nav-icon">ð</span>Dashboard</a>
-<a href="container-overzicht.html"><span class="nav-icon">ð¦</span>Container overzicht</a>
-<a href="geleegd-vandaag.html"><span class="nav-icon">ðï¸</span>Vandaag geleegd</a>
-<a href="probleemcontainers.html"><span class="nav-icon">â ï¸</span>Probleemcontainers</a>
-<a href="laatste-activiteit.html"><span class="nav-icon">ð</span>Laatste activiteit</a>
-<a href="container-activiteit.html"><span class="nav-icon">ð</span>Container activiteit</a>
-</div>
+  <div class="sidebar-logo">
+    <span class="logo-text">renewi</span>
+    <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#7ab648"/></svg>
+  </div>
+  <div class="sidebar-nav">
+    <a href="index.html" class="active">Dashboard</a>
+    <a href="container-overzicht.html">Container overzicht</a>
+    <a href="geleegd-vandaag.html">Vandaag geleegd</a>
+    <a href="probleemcontainers.html">Probleemcontainers</a>
+    <a href="laatste-activiteit.html">Laatste activiteit</a>
+    <a href="container-activiteit.html">Container activiteit</a>
+  </div>
 </nav>
-<div class="main-wrap">
-<div class="header">
-<h1>Dashboard</h1>
-</div>
+<div class="main-content">
+  <div class="page-header">
+    <h1>Dashboard</h1>
+  </div>
+  <div class="content-area">
+    <div class="breadcrumb">Dashboard</div>
 
-<h1>Container Operations Dashboard</h1>
-</div>
-<div class="container">
-<div class="breadcrumb">Dashboard</div>
+    <div class="kpi-row">
+      <div class="kpi-card kpi-green">
+        <div class="label">Containers in bedrijf</div>
+        <div class="value">498</div>
+        <div class="sub">Totaal actieve containers</div>
+        <div class="icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#388e3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/></svg>
+        </div>
+      </div>
+      <div class="kpi-card kpi-blue">
+        <div class="label">Vandaag geleegd</div>
+        <div class="value">132</div>
+        <div class="sub"><span class="up">+12%</span> t.o.v. gisteren</div>
+        <div class="icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+      </div>
+      <div class="kpi-card kpi-purple">
+        <div class="label">Achterstallig</div>
+        <div class="value" style="color:#c62828">7</div>
+        <div class="sub">Containers niet op tijd geleegd</div>
+        <div class="icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6a1b9a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+      </div>
+      <div class="kpi-card kpi-peach">
+        <div class="label">Laatste route-activiteit</div>
+        <div class="value" style="font-size:18px">Truck 12</div>
+        <div class="sub">Amsterdam West</div>
+        <div class="icon-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e65100" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+      </div>
+    </div>
 
-<div class="kpi-row">
-<div class="kpi-card">
-<div class="label">Containers in bedrijf</div>
-<div class="value">498</div>
-<div class="sub">Totaal actieve containers</div>
-<a href="container-overzicht.html" class="arrow-btn">&#8599;</a>
-</div>
-<div class="kpi-card">
-<div class="label">Vandaag geleegd</div>
-<div class="value">132</div>
-<div class="sub"><span class="up">+12%</span> t.o.v. gisteren</div>
-<a href="geleegd-vandaag.html" class="arrow-btn">&#8599;</a>
-</div>
-<div class="kpi-card">
-<div class="label">Achterstallig</div>
-<div class="value" style="color:#e74c3c">7</div>
-<div class="sub">Containers niet op tijd geleegd</div>
-<a href="probleemcontainers.html" class="arrow-btn">&#8599;</a>
-</div>
-<div class="kpi-card">
-<div class="label">Laatste route-activiteit</div>
-<div class="value" style="font-size:18px">Truck 12</div>
-<div class="sub">Amsterdam West</div>
-<a href="laatste-activiteit.html" class="arrow-btn">&#8599;</a>
-</div>
-</div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="section-title">Containers die aandacht nodig hebben</div>
+        <table>
+          <thead><tr><th>Container</th><th>Locatie</th><th>Laatste lediging</th><th>Door</th></tr></thead>
+          <tbody>
+            <tr><td><a href="container-activiteit.html" class="container-link">C-204</a></td><td>Utrecht Centrum</td><td>3 dagen geleden</td><td>Truck 7</td></tr>
+            <tr><td><a href="container-activiteit.html" class="container-link">C-118</a></td><td>Rotterdam Noord</td><td>4 dagen geleden</td><td>Truck 3</td></tr>
+            <tr><td><a href="container-activiteit.html" class="container-link">C-332</a></td><td>Den Haag</td><td>5 dagen geleden</td><td>Lokaal personeel</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="section-title">Recente wijzigingen in toegang</div>
+        <table>
+          <thead><tr><th>Tijd</th><th>Locatie</th><th>Container</th><th>Persoon</th></tr></thead>
+          <tbody>
+            <tr><td>14:42</td><td>Amsterdam West</td><td><a href="container-activiteit.html" class="container-link">C-045</a></td><td>004</td></tr>
+            <tr><td>14:37</td><td>Haarlem</td><td><a href="container-activiteit.html" class="container-link">C-087</a></td><td>567</td></tr>
+            <tr><td>14:30</td><td>Leiden</td><td><a href="container-activiteit.html" class="container-link">C-233</a></td><td>124</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-<div class="grid-2">
-<div class="card">
-<div class="section-title">Containers die aandacht nodig hebben</div>
-<table>
-<thead><tr><th>Container</th><th>Locatie</th><th>Laatste lediging</th><th>Door</th></tr></thead>
-<tbody>
-<tr><td><a href="container-activiteit.html" class="container-link">C-204</a></td><td>Utrecht Centrum</td><td>3 dagen geleden</td><td>Truck 7</td></tr>
-<tr><td><a href="container-activiteit.html" class="container-link">C-118</a></td><td>Rotterdam Noord</td><td>4 dagen geleden</td><td>Truck 3</td></tr>
-<tr><td><a href="container-activiteit.html" class="container-link">C-332</a></td><td>Den Haag</td><td>5 dagen geleden</td><td>Lokaal personeel</td></tr>
-</tbody>
-</table>
-</div>
-<div class="card">
-<div class="section-title">Recente wijzigingen in toegang</div>
-<table>
-<thead><tr><th>Tijd</th><th>Locatie</th><th>Container</th><th>Persoon</th></tr></thead>
-<tbody>
-<tr><td>14:42</td><td>Amsterdam West</td><td><a href="container-activiteit.html" class="container-link">C-045</a></td><td>004</td></tr>
-<tr><td>14:37</td><td>Haarlem</td><td><a href="container-activiteit.html" class="container-link">C-087</a></td><td>567</td></tr>
-<tr><td>14:30</td><td>Leiden</td><td><a href="container-activiteit.html" class="container-link">C-233</a></td><td>124</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div class="grid-2">
-<div class="card">
-<div class="section-title">Openingen per dag</div>
-<table>
-<thead><tr><th>Dag</th><th>Openingen</th></tr></thead>
-<tbody>
-<tr><td>Maandag</td><td>120</td></tr>
-<tr><td>Dinsdag</td><td>140</td></tr>
-<tr><td>Woensdag</td><td>135</td></tr>
-<tr><td>Donderdag</td><td>128</td></tr>
-<tr><td>Vrijdag</td><td>145</td></tr>
-<tr><td>Zaterdag</td><td>98</td></tr>
-<tr><td>Zondag</td><td>72</td></tr>
-</tbody>
-</table>
-</div>
-<div class="card">
-<div class="section-title">Openingen per dag (grafiek)</div>
-<div class="chart-container"><canvas id="dailyChart"></canvas></div>
-</div>
-</div>
-</div>
-
-
+    <div class="grid-2">
+      <div class="card">
+        <div class="section-title">Openingen per dag</div>
+        <table>
+          <thead><tr><th>Dag</th><th>Openingen</th></tr></thead>
+          <tbody>
+            <tr><td>Maandag</td><td>120</td></tr>
+            <tr><td>Dinsdag</td><td>140</td></tr>
+            <tr><td>Woensdag</td><td>135</td></tr>
+            <tr><td>Donderdag</td><td>128</td></tr>
+            <tr><td>Vrijdag</td><td>145</td></tr>
+            <tr><td>Zaterdag</td><td>98</td></tr>
+            <tr><td>Zondag</td><td>72</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="section-title">Openingen per dag (grafiek)</div>
+        <div class="chart-container"><canvas id="dailyChart"></canvas></div>
+      </div>
+    </div>
+  </div>
 </div>
 <script>
-new Chart(document.getElementById('dailyChart'),{type:'bar',data:{labels:['Ma','Di','Wo','Do','Vr','Za','Zo'],datasets:[{label:'Openingen',data:[120,140,135,128,145,98,72],backgroundColor:'#6b8cba',borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#f0f2f5'}},x:{grid:{display:false}}}}});
+new Chart(document.getElementById('dailyChart'),{type:'bar',data:{labels:['Ma','Di','Wo','Do','Vr','Za','Zo'],datasets:[{label:'Openingen',data:[120,140,135,128,145,98,72],backgroundColor:'#f5820d',borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#f0f0f0'}},x:{grid:{display:false}}}}});
 </script>
 <script>
-document.addEventListener('click',function(e){var s=document.querySelector('.sidebar'),t=document.querySelector('.sidebar-toggle');if(s&&s.classList.contains('open')&&!s.contains(e.target)&&e.target!==t){s.classList.remove('open');}});
 </script>
 </body>
 </html>
