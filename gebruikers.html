@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Renewi ÃÂ¢ÃÂÃÂ Gebruikers overzicht</title>
+<title>Renewi â Gebruikers overzicht</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:system-ui,-apple-system,sans-serif;background:#ffffff;color:#1a1a1a;line-height:1.6}
@@ -77,6 +77,37 @@ tbody tr:hover{background:#fafafa}
 .wijzig-badge.nieuw{background:#e8f5e9;color:#2e7d32;border:1px solid #c8e6c9}
 .wijzig-badge.aangepast{background:#fff3e0;color:#e65100;border:1px solid #ffe0b2}
 .wijzig-badge.beeindigd{background:#fbe9e7;color:#c62828;border:1px solid #ffcdd2}
+
+/* Mobile hamburger */
+.mobile-menu-btn{display:none;position:fixed;top:16px;left:16px;z-index:200;background:#fff;border:1px solid #e5e5e5;border-radius:6px;width:40px;height:40px;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+.mobile-menu-btn svg{width:22px;height:22px;color:#333}
+.sidebar-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.3);z-index:90}
+
+@media(max-width:900px){
+  .sidebar{transform:translateX(-100%);transition:transform 0.3s ease}
+  .sidebar.open{transform:translateX(0)}
+  .sidebar-overlay.open{display:block}
+  .mobile-menu-btn{display:flex}
+  .main-content{margin-left:0!important}
+  .page-header{padding:16px 16px 16px 64px}
+  .page-header h1{font-size:18px}
+  .content-area{padding:16px}
+}
+@media(max-width:768px){
+  .kpi-row{grid-template-columns:1fr!important}
+  .grid-2,.layout-2col,.chart-row,.charts-grid{grid-template-columns:1fr!important;display:grid}
+  .toolbar{flex-direction:column;align-items:stretch}
+  .toolbar-left,.toolbar-right{flex-wrap:wrap}
+  .search-box{min-width:100%!important;width:100%}
+  table{font-size:12px}
+  .table-container,.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  td,th{padding:8px 10px!important;white-space:nowrap}
+  .pagination{flex-wrap:wrap;justify-content:center}
+  .filter-group{flex-direction:column;width:100%}
+  .filter-group select{width:100%}
+  .highlight-card{padding:16px!important}
+  .wijzigingen-section{margin-top:20px}
+}
 </style>
 </head>
 <body>
@@ -88,7 +119,7 @@ tbody tr:hover{background:#fafafa}
     <a href="index.html">Dashboard</a>
     <a href="container-overzicht.html">Container overzicht</a>
     <a href="geleegd-vandaag.html">Vandaag geleegd</a>
-    <a href="probleemcontainers.html">Probleemcontainers</a>
+    <a href="aandachtspunten.html">Aandachtspunten</a>
     <a href="laatste-activiteit.html">Laatste activiteit</a>
     <a href="container-activiteit.html">Container activiteit</a>
     <a href="gebruikers.html" class="active">Gebruikers</a>
@@ -138,7 +169,7 @@ tbody tr:hover{background:#fafafa}
         </thead>
         <tbody id="usersBody">
           <tr>
-            <td><span class="status-badge">ÃÂ¢ÃÂÃÂ</span></td>
+            <td><span class="status-badge">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</span></td>
             <td>Jan de Vries</td>
             <td>j.devries@renewi.com</td>
             <td>05-03-2026 09:15</td>
@@ -153,7 +184,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">ÃÂ¢ÃÂÃÂ</span></td>
+            <td><span class="status-badge">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</span></td>
             <td>Maria Jansen</td>
             <td>m.jansen@renewi.com</td>
             <td>05-03-2026 08:42</td>
@@ -168,7 +199,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">ÃÂ¢ÃÂÃÂ</span></td>
+            <td><span class="status-badge">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</span></td>
             <td>Peter Bakker</td>
             <td>p.bakker@renewi.com</td>
             <td>04-03-2026 17:30</td>
@@ -183,7 +214,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">ÃÂ¢ÃÂÃÂ</span></td>
+            <td><span class="status-badge">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</span></td>
             <td>Sophie van Dam</td>
             <td>s.vandam@renewi.com</td>
             <td>04-03-2026 14:20</td>
@@ -198,7 +229,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">ÃÂ¢ÃÂÃÂ</span></td>
+            <td><span class="status-badge">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</span></td>
             <td>Thomas Smit</td>
             <td>t.smit@renewi.com</td>
             <td>03-03-2026 16:45</td>
@@ -213,7 +244,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">ÃÂ¢ÃÂÃÂ</span></td>
+            <td><span class="status-badge">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</span></td>
             <td>Lisa Mulder</td>
             <td>l.mulder@renewi.com</td>
             <td>03-03-2026 11:10</td>
@@ -228,7 +259,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">ÃÂ¢ÃÂÃÂ</span></td>
+            <td><span class="status-badge">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</span></td>
             <td>Kevin Visser</td>
             <td>k.visser@renewi.com</td>
             <td>02-03-2026 15:55</td>
@@ -243,7 +274,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">ÃÂ¢ÃÂÃÂ</span></td>
+            <td><span class="status-badge">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</span></td>
             <td>Emma Dekker</td>
             <td>e.dekker@renewi.com</td>
             <td>02-03-2026 10:30</td>
@@ -258,7 +289,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">ÃÂ¢ÃÂÃÂ</span></td>
+            <td><span class="status-badge">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</span></td>
             <td>Bas Hendriks</td>
             <td>b.hendriks@renewi.com</td>
             <td>01-03-2026 14:20</td>
@@ -273,7 +304,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">ÃÂ¢ÃÂÃÂ</span></td>
+            <td><span class="status-badge">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</span></td>
             <td>Iris Peters</td>
             <td>i.peters@renewi.com</td>
             <td>28-02-2026 09:45</td>
@@ -290,11 +321,11 @@ tbody tr:hover{background:#fafafa}
         </tbody>
       </table>
       <div class="pagination">
-        <button class="page-btn disabled">ÃÂ¢ÃÂÃÂ</button>
+        <button class="page-btn disabled">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</button>
         <button class="page-btn active">1</button>
         <button class="page-btn">2</button>
         <button class="page-btn">3</button>
-        <button class="page-btn">ÃÂ¢ÃÂÃÂ</button>
+        <button class="page-btn">ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ</button>
       </div>
     </div>
     <!-- Laatste wijzigingen -->
