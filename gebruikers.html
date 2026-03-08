@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Renewi â Gebruikers overzicht</title>
+<title>Renewi - Gebruikers overzicht</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:system-ui,-apple-system,sans-serif;background:#ffffff;color:#1a1a1a;line-height:1.6}
@@ -50,7 +50,8 @@ tbody tr:last-child td{border-bottom:none}
 tbody tr:hover{background:#fafafa}
 
 /* Status badge */
-.status-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#22c55e;color:#fff;font-size:12px;font-weight:700;line-height:1}
+.status-badge{display:inline-block;width:22px;height:22px;border-radius:50%;background:#22c55e;position:relative}
+.status-badge::after{content:'';position:absolute;left:6px;top:3px;width:5px;height:9px;border:2px solid white;border-top:none;border-left:none;transform:rotate(45deg)}
 
 /* Rol pill */
 .rol-pill{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:500;background:#f3f4f6;color:#555;border:1px solid #e5e5e5}
@@ -169,7 +170,7 @@ tbody tr:hover{background:#fafafa}
         </thead>
         <tbody id="usersBody">
           <tr>
-            <td><span class="status-badge">â</span></td>
+            <td><span class="status-badge"></span></td>
             <td>Jan de Vries</td>
             <td>j.devries@renewi.com</td>
             <td>05-03-2026 09:15</td>
@@ -184,7 +185,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">â</span></td>
+            <td><span class="status-badge"></span></td>
             <td>Maria Jansen</td>
             <td>m.jansen@renewi.com</td>
             <td>05-03-2026 08:42</td>
@@ -199,7 +200,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">â</span></td>
+            <td><span class="status-badge"></span></td>
             <td>Peter Bakker</td>
             <td>p.bakker@renewi.com</td>
             <td>04-03-2026 17:30</td>
@@ -214,7 +215,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">â</span></td>
+            <td><span class="status-badge"></span></td>
             <td>Sophie van Dam</td>
             <td>s.vandam@renewi.com</td>
             <td>04-03-2026 14:20</td>
@@ -229,7 +230,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">â</span></td>
+            <td><span class="status-badge"></span></td>
             <td>Thomas Smit</td>
             <td>t.smit@renewi.com</td>
             <td>03-03-2026 16:45</td>
@@ -244,7 +245,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">â</span></td>
+            <td><span class="status-badge"></span></td>
             <td>Lisa Mulder</td>
             <td>l.mulder@renewi.com</td>
             <td>03-03-2026 11:10</td>
@@ -259,7 +260,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">â</span></td>
+            <td><span class="status-badge"></span></td>
             <td>Kevin Visser</td>
             <td>k.visser@renewi.com</td>
             <td>02-03-2026 15:55</td>
@@ -274,7 +275,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">â</span></td>
+            <td><span class="status-badge"></span></td>
             <td>Emma Dekker</td>
             <td>e.dekker@renewi.com</td>
             <td>02-03-2026 10:30</td>
@@ -289,7 +290,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">â</span></td>
+            <td><span class="status-badge"></span></td>
             <td>Bas Hendriks</td>
             <td>b.hendriks@renewi.com</td>
             <td>01-03-2026 14:20</td>
@@ -304,7 +305,7 @@ tbody tr:hover{background:#fafafa}
             </td>
           </tr>
           <tr>
-            <td><span class="status-badge">â</span></td>
+            <td><span class="status-badge"></span></td>
             <td>Iris Peters</td>
             <td>i.peters@renewi.com</td>
             <td>28-02-2026 09:45</td>
