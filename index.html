@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Renewi â Container Operations Dashboard</title>
+<title>Renewi Ã¢ÂÂ Container Operations Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -89,6 +89,12 @@ a.container-link:hover{text-decoration:underline}
   .kpi-row{grid-template-columns:repeat(2,1fr)}
   .grid-2{grid-template-columns:1fr}
 }
+
+/* Arrow link buttons */
+.arrow-btn{position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;justify-content:center;background:#1a1a1a;color:#fff;border-radius:4px;padding:4px 8px;text-decoration:none;font-size:13px;line-height:1;transition:background 0.2s ease;z-index:2}
+.arrow-btn:hover{background:#333}
+.section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;position:relative}
+.section-header .arrow-btn{position:static}
 </style>
 </head>
 <body>
@@ -115,6 +121,7 @@ a.container-link:hover{text-decoration:underline}
 
     <div class="kpi-row">
       <div class="kpi-card kpi-green">
+        <a href="container-overzicht.html" class="arrow-btn" title="Container overzicht">&#8599;</a>
         <div class="label">Containers in bedrijf</div>
         <div class="value">498</div>
         <div class="sub">Totaal actieve containers</div>
@@ -123,6 +130,7 @@ a.container-link:hover{text-decoration:underline}
         </div>
       </div>
       <div class="kpi-card kpi-blue">
+        <a href="geleegd-vandaag.html" class="arrow-btn" title="Geleegd vandaag">&#8599;</a>
         <div class="label">Vandaag geleegd</div>
         <div class="value">132</div>
         <div class="sub"><span class="up">+12%</span> t.o.v. gisteren</div>
@@ -131,6 +139,7 @@ a.container-link:hover{text-decoration:underline}
         </div>
       </div>
       <div class="kpi-card kpi-purple">
+        <a href="probleemcontainers.html" class="arrow-btn" title="Probleemcontainers">&#8599;</a>
         <div class="label">Achterstallig</div>
         <div class="value" style="color:#c62828">7</div>
         <div class="sub">Containers niet op tijd geleegd</div>
@@ -139,6 +148,7 @@ a.container-link:hover{text-decoration:underline}
         </div>
       </div>
       <div class="kpi-card kpi-peach">
+        <a href="laatste-activiteit.html" class="arrow-btn" title="Laatste activiteit">&#8599;</a>
         <div class="label">Laatste route-activiteit</div>
         <div class="value" style="font-size:18px">Truck 12</div>
         <div class="sub">Amsterdam West</div>
@@ -150,7 +160,7 @@ a.container-link:hover{text-decoration:underline}
 
     <div class="grid-2">
       <div class="card">
-        <div class="section-title">Containers die aandacht nodig hebben</div>
+        <div class="section-title" style="display:flex;justify-content:space-between;align-items:center">Containers die aandacht nodig hebben <a href="probleemcontainers.html" class="arrow-btn" title="Probleemcontainers">&#8599;</a></div>
         <table>
           <thead><tr><th>Container</th><th>Locatie</th><th>Laatste lediging</th><th>Door</th></tr></thead>
           <tbody>
@@ -175,7 +185,7 @@ a.container-link:hover{text-decoration:underline}
 
     <div class="grid-2">
       <div class="card">
-        <div class="section-title">Openingen per dag</div>
+        <div class="section-title" style="display:flex;justify-content:space-between;align-items:center">Openingen per dag <a href="container-activiteit.html" class="arrow-btn" title="Container activiteit">&#8599;</a></div>
         <table>
           <thead><tr><th>Dag</th><th>Openingen</th></tr></thead>
           <tbody>
