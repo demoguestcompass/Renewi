@@ -8,29 +8,20 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:system-ui,-apple-system,sans-serif;background:#ffffff;color:#1a1a1a;line-height:1.6}
-
-/* Sidebar */
 .sidebar{position:fixed;top:0;left:0;width:240px;height:100vh;background:#f7f7f7;border-right:1px solid #e5e5e5;display:flex;flex-direction:column;z-index:100;overflow-y:auto}
 .sidebar-logo{padding:24px 20px 28px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #e5e5e5}
-.sidebar-logo .logo-text{font-size:22px;font-weight:700;color:#333;letter-spacing:0.5px;text-transform:lowercase}
 .sidebar-nav{flex:1;padding:12px 0}
 .sidebar-nav a{display:flex;align-items:center;padding:10px 20px;color:#333;text-decoration:none;font-size:14px;border-left:3px solid transparent;transition:all 0.2s ease}
 .sidebar-nav a:hover{background:#ebebeb}
 .sidebar-nav a.active{background:#efefef;color:#1a1a1a;font-weight:600;border-left:3px solid #f5820d}
-
-/* Main layout */
 .main-content{margin-left:240px;min-height:100vh}
 .page-header{background:#fff;padding:20px 32px;border-bottom:1px solid #e5e5e5}
 .page-header h1{font-size:22px;font-weight:600;color:#1a1a1a}
 .content-area{max-width:1200px;margin:24px auto;padding:0 24px}
-
 .breadcrumb{font-size:13px;color:#888;margin-bottom:20px}
 .breadcrumb a{color:#888;text-decoration:none}
-.breadcrumb a:hover{text-decoration:underline}
-
-/* KPI Cards */
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
-.kpi-card{border-radius:10px;padding:20px 24px;border:1px solid #e5e5e5;position:relative;overflow:visible}
+.kpi-card{border-radius:10px;padding:48px 24px 20px 24px;border:1px solid #e5e5e5;position:relative;overflow:visible}
 .kpi-green{background:#e8f5e9}
 .kpi-blue{background:#e3f2fd}
 .kpi-purple{background:#f3e5f5}
@@ -44,62 +35,27 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#ffffff;color:#1a
 .kpi-blue .icon-box{background:#bbdefb}
 .kpi-purple .icon-box{background:#e1bee7}
 .kpi-peach .icon-box{background:#ffe0b2}
-
-/* Section */
+.arrow-btn{position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;justify-content:center;background:#1a1a1a;color:#fff !important;border-radius:6px;width:30px;height:30px;text-decoration:none;font-size:16px;line-height:1;transition:background 0.2s ease;z-index:10;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,0.3)}
+.arrow-btn:hover{background:#f5820d}
 .section-title{font-size:16px;font-weight:700;color:#1a1a1a;margin-bottom:12px}
-
-/* Cards */
 .card{background:#fff;border-radius:10px;padding:24px;border:1px solid #e5e5e5;margin-bottom:24px}
-
-/* Tables */
+.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.card-header .arrow-btn{position:static;box-shadow:none}
+.card-header .section-title{margin-bottom:0}
 table{width:100%;border-collapse:collapse}
 th{text-align:left;font-size:12px;color:#888;font-weight:600;padding:10px 12px;background:#f5f5f5;border-bottom:2px solid #eee;text-transform:uppercase;letter-spacing:0.5px}
 td{padding:10px 12px;border-bottom:1px solid #eee;font-size:14px}
-table tbody tr{transition:background 0.15s ease}
 table tbody tr:hover{background:#fafafa}
-
-/* Badges */
 .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600}
-.badge-ok{background:#e8f5e9;color:#2e7d32}
-.badge-warning{background:#fff3e0;color:#e65100}
-.badge-overdue{background:#fdecea;color:#c62828}
-.badge-green{background:#e8f5e9;color:#2e7d32}
 .badge-orange{background:#fff3e0;color:#e65100}
 .badge-red{background:#fdecea;color:#c62828}
+.badge-niet-locatie{background:#e0f2f1;color:#004d40}
 .badge-defect{background:#fce4ec;color:#880e4f}
 .badge-niet-geleegd{background:#e8eaf6;color:#283593}
-.badge-niet-locatie{background:#e0f2f1;color:#004d40}
-
-/* Links */
 a.container-link{color:#f5820d;text-decoration:none;font-weight:600}
 a.container-link:hover{text-decoration:underline}
-
-/* Grid */
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-
-/* Chart */
 .chart-container{position:relative;height:220px}
-
-/* Buttons */
-.btn-primary{background:#fff;border:2px solid #f5820d;color:#f5820d;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:600}
-
-/* Responsive */
-
-}
-
-}
-
-/* Arrow link buttons */
-.arrow-btn{position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;justify-content:center;background:#1a1a1a;color:#fff !important;border-radius:6px;width:32px;height:32px;text-decoration:none;font-size:18px;line-height:1;transition:background 0.2s ease;z-index:10;font-weight:900;box-shadow:0 2px 6px rgba(0,0,0,0.25)}
-.arrow-btn:hover{background:#444}
-.section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;position:relative}
-.section-header .arrow-btn{position:static}
-
-/* Mobile hamburger */
-.mobile-menu-btn{display:none;position:fixed;top:16px;left:16px;z-index:200;background:#fff;border:1px solid #e5e5e5;border-radius:6px;width:40px;height:40px;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
-.mobile-menu-btn svg{width:22px;height:22px;color:#333}
-.sidebar-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.3);z-index:90}
-
 .hamburger{display:none;position:fixed;top:12px;left:12px;z-index:300;background:#fff;border:1px solid #e5e5e5;border-radius:8px;width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.12);flex-direction:column;gap:5px;padding:10px}
 .hamburger span{display:block;width:20px;height:2px;background:#333;border-radius:2px}
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:150}
@@ -112,19 +68,11 @@ a.container-link:hover{text-decoration:underline}
   .page-header{padding-left:64px}
 }
 @media(max-width:768px){
-  .kpi-row{grid-template-columns:1fr!important}
-  .grid-2,.layout-2col,.chart-row,.charts-grid{grid-template-columns:1fr!important;display:grid}
-  .toolbar{flex-direction:column;align-items:stretch}
-  .toolbar-left,.toolbar-right{flex-wrap:wrap}
-  .search-box{min-width:100%!important;width:100%}
+  .kpi-row{grid-template-columns:1fr 1fr}
+  .grid-2{grid-template-columns:1fr}
   table{font-size:12px}
-  .table-container,.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  td,th{padding:8px 10px!important;white-space:nowrap}
-  .pagination{flex-wrap:wrap;justify-content:center}
-  .filter-group{flex-direction:column;width:100%}
-  .filter-group select{width:100%}
-  .highlight-card{padding:16px!important}
-  .wijzigingen-section{margin-top:20px}
+  td,th{padding:8px 10px !important;white-space:nowrap}
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 }
 </style>
 </head>
@@ -154,7 +102,6 @@ a.container-link:hover{text-decoration:underline}
   </div>
   <div class="content-area">
     <div class="breadcrumb">Dashboard</div>
-
     <div class="kpi-row">
       <div class="kpi-card kpi-green">
         <a href="container-overzicht.html" class="arrow-btn" title="Containeroverzicht">&#8599;</a>
@@ -166,7 +113,7 @@ a.container-link:hover{text-decoration:underline}
         </div>
       </div>
       <div class="kpi-card kpi-blue">
-        <a href="geleegd-vandaag.html" class="arrow-btn" title="Geleegd vandaag">&#8599;</a>
+        <a href="geleegd-vandaag.html" class="arrow-btn" title="Vandaag geleegd">&#8599;</a>
         <div class="label">Vandaag geleegd</div>
         <div class="value">132</div>
         <div class="sub"><span class="up">+12%</span> t.o.v. gisteren</div>
@@ -193,10 +140,12 @@ a.container-link:hover{text-decoration:underline}
         </div>
       </div>
     </div>
-
     <div class="grid-2">
       <div class="card">
-        <div class="section-title" style="display:flex;justify-content:space-between;align-items:center">Containers die aandacht nodig hebben <a href="aandachtspunten.html" class="arrow-btn" title="Aandachtspunten">&#8599;</a></div>
+        <div class="card-header">
+          <div class="section-title">Containers die aandacht nodig hebben</div>
+          <a href="aandachtspunten.html" class="arrow-btn" title="Aandachtspunten">&#8599;</a>
+        </div>
         <table>
           <thead><tr><th>Container</th><th>Locatie</th><th>Laatste lediging</th><th>Door</th><th>Status</th></tr></thead>
           <tbody>
@@ -218,10 +167,12 @@ a.container-link:hover{text-decoration:underline}
         </table>
       </div>
     </div>
-
     <div class="grid-2">
       <div class="card">
-        <div class="section-title" style="display:flex;justify-content:space-between;align-items:center">Openingen per dag <a href="container-activiteit.html" class="arrow-btn" title="Containeractiviteit">&#8599;</a></div>
+        <div class="card-header">
+          <div class="section-title">Openingen per dag</div>
+          <a href="container-activiteit.html" class="arrow-btn" title="Containeractiviteit">&#8599;</a>
+        </div>
         <table>
           <thead><tr><th>Dag</th><th>Openingen</th></tr></thead>
           <tbody>
@@ -244,8 +195,6 @@ a.container-link:hover{text-decoration:underline}
 </div>
 <script>
 new Chart(document.getElementById('dailyChart'),{type:'bar',data:{labels:['Ma','Di','Wo','Do','Vr','Za','Zo'],datasets:[{label:'Openingen',data:[120,140,135,128,145,98,72],backgroundColor:'#f5820d',borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:'#f0f0f0'}},x:{grid:{display:false}}}}});
-</script>
-<script>
 </script>
 <script>
 function toggleSidebar(){
