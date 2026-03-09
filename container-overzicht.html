@@ -65,6 +65,7 @@ a.container-link:hover{text-decoration:underline}
 .badge-green{background:#e8f5e9;color:#2e7d32}
 .badge-orange{background:#fff3e0;color:#e65100}
 .badge-red{background:#fdecea;color:#c62828}
+.badge-purple{background:#f3e5f5;color:#6a1b9a}
 
 /* Responsive */
 
@@ -168,6 +169,7 @@ a.container-link:hover{text-decoration:underline}
 <option value="All">Alle statussen</option>
 <option value="OK">OK</option>
 <option value="Warning">Waarschuwing / Achterstallig</option>
+<option value="Defect">Defect</option>
 </select>
 <select id="filterOpened" onchange="applyFilters()">
 <option value="All">Laatst geopend</option>
@@ -184,7 +186,7 @@ a.container-link:hover{text-decoration:underline}
 <tr><td><a href="container-activiteit.html" class="container-link">C-204</a></td><td>Utrecht Centrum</td><td>3 dagen geleden</td><td>Renewi Truck 7</td><td><span class="badge badge-orange">Waarschuwing</span></td></tr>
 <tr><td><a href="container-activiteit.html" class="container-link">C-118</a></td><td>Rotterdam Noord</td><td>4 dagen geleden</td><td>Renewi Truck 3</td><td><span class="badge badge-orange">Waarschuwing</span></td></tr>
 <tr><td><a href="container-activiteit.html" class="container-link">C-332</a></td><td>Den Haag</td><td>5 dagen geleden</td><td>Daan van der Linden</td><td><span class="badge badge-red">Achterstallig</span></td></tr>
-<tr><td><a href="container-activiteit.html" class="container-link">C-199</a></td><td>Amsterdam Zuid</td><td>14:15 vandaag</td><td>Persoon 089</td><td><span class="badge badge-green">OK</span></td></tr>
+<tr><td><a href="container-activiteit.html" class="container-link">C-199</a></td><td>Amsterdam Zuid</td><td>14:15 vandaag</td><td>Persoon 089</td><td><span class="badge badge-purple">Defect</span></td></tr>
 <tr><td><a href="container-activiteit.html" class="container-link">C-056</a></td><td>Rotterdam West</td><td>13:50 vandaag</td><td>Renewi Truck 5</td><td><span class="badge badge-green">OK</span></td></tr>
 </tbody>
 </table>
@@ -209,7 +211,8 @@ function applyFilters(){
     var showRegion=region==='All'||rowRegion===region;
     var showStatus=true;
     if(status==='OK'){showStatus=rowStatus==='OK';}
-    else if(status==='Warning'){showStatus=rowStatus!=='OK';}
+    else if(status==='Warning'){showStatus=rowStatus==='Waarschuwing'||rowStatus==='Achterstallig';}
+    else if(status==='Defect'){showStatus=rowStatus==='Defect';}
     var showOpened=true;
     if(opened==='Today'){showOpened=rowOpened.indexOf('vandaag')!==-1;}
     else if(opened==='Older'){showOpened=rowOpened.indexOf('vandaag')===-1;}
