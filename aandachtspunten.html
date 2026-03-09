@@ -50,6 +50,9 @@ table tbody tr:hover{background:#fafafa}
 .badge-ok{background:#e8f5e9;color:#2e7d32}
 .badge-warning{background:#fff3e0;color:#e65100}
 .badge-overdue{background:#fdecea;color:#c62828}
+.badge-defect{background:#fce4ec;color:#880e4f}
+.badge-niet-geleegd{background:#e8eaf6;color:#283593}
+.badge-niet-locatie{background:#e0f2f1;color:#004d40}
 
 a.container-link{color:#f5820d;text-decoration:none;font-weight:600}
 a.container-link:hover{text-decoration:underline}
@@ -127,6 +130,15 @@ a.container-link:hover{text-decoration:underline}
 <option value="3">3+ dagen</option>
 <option value="4">4+ dagen</option>
 </select>
+<select id="filterStatusPC" onchange="applyFiltersPC()">
+<option value="All">Alle statussen</option>
+<option value="Waarschuwing">Waarschuwing</option>
+<option value="Achterstallig">Achterstallig</option>
+<option value="Defect">Defect</option>
+<option value="Slot Defect">Slot Defect</option>
+<option value="Container niet geledigd">Container niet geledigd</option>
+<option value="Container niet op locatie">Container niet op locatie</option>
+</select>
 </div>
 <table>
 <thead><tr><th>Container</th><th>Locatie</th><th>Laatst geopend</th><th>Persoon</th><th>Status</th></tr></thead>
@@ -134,8 +146,8 @@ a.container-link:hover{text-decoration:underline}
 <tr><td><a href="container-activiteit.html" class="container-link">C-204</a></td><td>Utrecht Centrum</td><td>3 dagen geleden</td><td>Jan de Vries</td><td><span class="badge badge-orange">Waarschuwing</span></td></tr>
 <tr><td><a href="container-activiteit.html" class="container-link">C-118</a></td><td>Rotterdam Noord</td><td>4 dagen geleden</td><td>Mark Willems</td><td><span class="badge badge-red">Achterstallig</span></td></tr>
 <tr><td><a href="container-activiteit.html" class="container-link">C-332</a></td><td>Den Haag</td><td>5 dagen geleden</td><td>Sophie van den Berg</td><td><span class="badge badge-red">Achterstallig</span></td></tr>
-<tr><td><a href="container-activiteit.html" class="container-link">C-401</a></td><td>Tilburg</td><td>4 dagen geleden</td><td>Peter Smit</td><td><span class="badge badge-purple">Defect</span></td></tr>
-<tr><td><a href="container-activiteit.html" class="container-link">C-289</a></td><td>Breda</td><td>5 dagen geleden</td><td>Kevin Bakker</td><td><span class="badge badge-red">Achterstallig</span></td></tr>
+<tr><td><a href="container-activiteit.html" class="container-link">C-401</a></td><td>Tilburg</td><td>4 dagen geleden</td><td>Peter Smit</td><td><span class="badge badge-defect">Slot Defect</span></td></tr>
+<tr><td><a href="container-activiteit.html" class="container-link">C-289</a></td><td>Breda</td><td>5 dagen geleden</td><td>Kevin Bakker</td><td><span class="badge badge-niet-locatie">Container niet op locatie</span></td></tr>
 <tr><td><a href="container-activiteit.html" class="container-link">C-177</a></td><td>Arnhem</td><td>3 dagen geleden</td><td>Lisa Jansen</td><td><span class="badge badge-orange">Waarschuwing</span></td></tr>
 <tr><td><a href="container-activiteit.html" class="container-link">C-450</a></td><td>Groningen</td><td>6 dagen geleden</td><td>Roel Mulder</td><td><span class="badge badge-red">Achterstallig</span></td></tr>
 </tbody>
@@ -148,18 +160,21 @@ a.container-link:hover{text-decoration:underline}
 function applyFiltersPC(){
   var region=document.getElementById('filterRegionPC').value;
   var days=document.getElementById('filterDaysPC').value;
+  var status=document.getElementById('filterStatusPC').value;
   var rows=document.querySelectorAll('table tbody tr');
   rows.forEach(function(row){
     var cells=row.querySelectorAll('td');
     if(cells.length<5)return;
     var rowRegion=cells[1].textContent.trim();
     var rowDaysText=cells[2].textContent.trim();
+    var rowStatus=cells[4].textContent.trim();
     var dayMatch=rowDaysText.match(/(\d+)/);
     var rowDays=dayMatch?parseInt(dayMatch[1]):0;
     var showRegion=region==='All'||rowRegion===region;
     var showDays=true;
     if(days!=='All'){showDays=rowDays>=parseInt(days);}
-    row.style.display=(showRegion&&showDays)?'':'none';
+    var showStatus=status==='All'||rowStatus===status;
+    row.style.display=(showRegion&&showDays&&showStatus)?'':'none';
   });
 }
 </script>
