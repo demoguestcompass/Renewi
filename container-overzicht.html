@@ -65,6 +65,9 @@ a.container-link:hover{text-decoration:underline}
 .badge-green{background:#e8f5e9;color:#2e7d32}
 .badge-orange{background:#fff3e0;color:#e65100}
 .badge-red{background:#fdecea;color:#c62828}
+.badge-defect{background:#fce4ec;color:#880e4f}
+.badge-niet-geleegd{background:#e8eaf6;color:#283593}
+.badge-niet-locatie{background:#e0f2f1;color:#004d40}
 .badge-purple{background:#f3e5f5;color:#6a1b9a}
 
 /* Responsive */
@@ -170,6 +173,9 @@ a.container-link:hover{text-decoration:underline}
 <option value="OK">OK</option>
 <option value="Warning">Waarschuwing / Achterstallig</option>
 <option value="Defect">Defect</option>
+<option value="SlotDefect">Slot Defect</option>
+<option value="NietGeledigd">Container niet geledigd</option>
+<option value="NietLocatie">Container niet op locatie</option>
 </select>
 <select id="filterOpened" onchange="applyFilters()">
 <option value="All">Laatst geopend</option>
@@ -183,9 +189,9 @@ a.container-link:hover{text-decoration:underline}
 <tr><td><a href="container-activiteit.html" class="container-link">C-045</a></td><td>Amsterdam West</td><td>14:42 vandaag</td><td>Persoon 004</td><td><span class="badge badge-green">OK</span></td></tr>
 <tr><td><a href="container-activiteit.html" class="container-link">C-087</a></td><td>Haarlem</td><td>14:37 vandaag</td><td>Persoon 567</td><td><span class="badge badge-green">OK</span></td></tr>
 <tr><td><a href="container-activiteit.html" class="container-link">C-233</a></td><td>Leiden</td><td>14:30 vandaag</td><td>Persoon 124</td><td><span class="badge badge-green">OK</span></td></tr>
-<tr><td><a href="container-activiteit.html" class="container-link">C-204</a></td><td>Utrecht Centrum</td><td>3 dagen geleden</td><td>Iris Koster</td><td><span class="badge badge-orange">Waarschuwing</span></td></tr>
+<tr><td><a href="container-activiteit.html" class="container-link">C-204</a></td><td>Utrecht Centrum</td><td>3 dagen geleden</td><td>Iris Koster</td><td><span class="badge badge-defect">Slot Defect</span></td></tr>
 <tr><td><a href="container-activiteit.html" class="container-link">C-118</a></td><td>Rotterdam Noord</td><td>4 dagen geleden</td><td>Lars van Dijk</td><td><span class="badge badge-orange">Waarschuwing</span></td></tr>
-<tr><td><a href="container-activiteit.html" class="container-link">C-332</a></td><td>Den Haag</td><td>5 dagen geleden</td><td>Daan van der Linden</td><td><span class="badge badge-red">Achterstallig</span></td></tr>
+<tr><td><a href="container-activiteit.html" class="container-link">C-332</a></td><td>Den Haag</td><td>5 dagen geleden</td><td>Daan van der Linden</td><td><span class="badge badge-niet-geleegd">Container niet geledigd</span></td></tr>
 <tr><td><a href="container-activiteit.html" class="container-link">C-199</a></td><td>Amsterdam Zuid</td><td>14:15 vandaag</td><td>Persoon 089</td><td><span class="badge badge-purple">Defect</span></td></tr>
 <tr><td><a href="container-activiteit.html" class="container-link">C-056</a></td><td>Rotterdam West</td><td>13:50 vandaag</td><td>Peter Smit</td><td><span class="badge badge-green">OK</span></td></tr>
 </tbody>
@@ -213,6 +219,9 @@ function applyFilters(){
     if(status==='OK'){showStatus=rowStatus==='OK';}
     else if(status==='Warning'){showStatus=rowStatus==='Waarschuwing'||rowStatus==='Achterstallig';}
     else if(status==='Defect'){showStatus=rowStatus==='Defect';}
+    else if(status==='SlotDefect'){showStatus=rowStatus==='Slot Defect';}
+    else if(status==='NietGeledigd'){showStatus=rowStatus==='Container niet geledigd';}
+    else if(status==='NietLocatie'){showStatus=rowStatus==='Container niet op locatie';}
     var showOpened=true;
     if(opened==='Today'){showOpened=rowOpened.indexOf('vandaag')!==-1;}
     else if(opened==='Older'){showOpened=rowOpened.indexOf('vandaag')===-1;}
