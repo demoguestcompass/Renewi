@@ -87,6 +87,13 @@ table tbody tr:hover{background:#fafafa}
   .highlight-card{padding:16px!important}
   .wijzigingen-section{margin-top:20px}
 }
+.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.badge-ok{background:#e8f5e9;color:#2e7d32}
+.badge-warning{background:#fff3e0;color:#e65100}
+.badge-overdue{background:#fdecea;color:#c62828}
+.badge-defect{background:#fce4ec;color:#880e4f}
+.badge-niet-geleegd{background:#e8eaf6;color:#283593}
+.badge-niet-locatie{background:#e0f2f1;color:#004d40}
 </style>
 </head>
 <body>
@@ -123,17 +130,17 @@ table tbody tr:hover{background:#fafafa}
 <div class="card">
 <div class="section-title">Activiteitenlogboek</div>
 <table>
-<thead><tr><th>Tijd</th><th>Container</th><th>Locatie</th><th>Persoon</th><th>Actie</th></tr></thead>
+<thead><tr><th>Tijd</th><th>Container</th><th>Locatie</th><th>Persoon</th><th>Actie</th><th>Status</th></tr></thead>
 <tbody>
-<tr><td>14:42</td><td><a href="container-activiteit.html" class="container-link">C-045</a></td><td>Amsterdam West</td><td>Jan de Vries</td><td><span class="action-badge">Geopend</span></td></tr>
-<tr><td>14:41</td><td><a href="container-activiteit.html" class="container-link">C-044</a></td><td>Amsterdam West</td><td>Jan de Vries</td><td><span class="action-badge">Geopend</span></td></tr>
-<tr><td>14:37</td><td><a href="container-activiteit.html" class="container-link">C-087</a></td><td>Haarlem</td><td>Mark Willems</td><td><span class="action-badge">Geopend</span></td></tr>
-<tr><td>14:30</td><td><a href="container-activiteit.html" class="container-link">C-233</a></td><td>Leiden</td><td>Sophie van den Berg</td><td><span class="action-badge">Geopend</span></td></tr>
-<tr><td>14:15</td><td><a href="container-activiteit.html" class="container-link">C-199</a></td><td>Amsterdam Zuid</td><td>Kevin Bakker</td><td><span class="action-badge">Geopend</span></td></tr>
-<tr><td>13:50</td><td><a href="container-activiteit.html" class="container-link">C-056</a></td><td>Rotterdam West</td><td>Peter Smit</td><td><span class="action-badge">Geopend</span></td></tr>
-<tr><td>13:22</td><td><a href="container-activiteit.html" class="container-link">C-301</a></td><td>Eindhoven</td><td>Daan Visser</td><td><span class="action-badge">Geopend</span></td></tr>
-<tr><td>12:45</td><td><a href="container-activiteit.html" class="container-link">C-178</a></td><td>Amersfoort</td><td>Nora Hendriks</td><td><span class="action-badge">Geopend</span></td></tr>
-<tr><td>12:10</td><td><a href="container-activiteit.html" class="container-link">C-422</a></td><td>Almere</td><td>Lisa Jansen</td><td><span class="action-badge">Geopend</span></td></tr>
+<tr><td>14:42</td><td><a href="container-activiteit.html" class="container-link">C-045</a></td><td>Amsterdam West</td><td>Jan de Vries</td><td><span class="action-badge">Geopend</span></td><td><span class="badge badge-ok">OK</span></td></tr>
+<tr><td>14:41</td><td><a href="container-activiteit.html" class="container-link">C-044</a></td><td>Amsterdam West</td><td>Jan de Vries</td><td><span class="action-badge">Geopend</span></td><td><span class="badge badge-ok">OK</span></td></tr>
+<tr><td>14:37</td><td><a href="container-activiteit.html" class="container-link">C-087</a></td><td>Haarlem</td><td>Mark Willems</td><td><span class="action-badge">Geopend</span></td><td><span class="badge badge-defect">Slot Defect</span></td></tr>
+<tr><td>14:30</td><td><a href="container-activiteit.html" class="container-link">C-233</a></td><td>Leiden</td><td>Sophie van den Berg</td><td><span class="action-badge">Geopend</span></td><td><span class="badge badge-ok">OK</span></td></tr>
+<tr><td>14:15</td><td><a href="container-activiteit.html" class="container-link">C-199</a></td><td>Amsterdam Zuid</td><td>Kevin Bakker</td><td><span class="action-badge">Geopend</span></td><td><span class="badge badge-niet-locatie">Container niet op locatie</span></td></tr>
+<tr><td>13:50</td><td><a href="container-activiteit.html" class="container-link">C-056</a></td><td>Rotterdam West</td><td>Peter Smit</td><td><span class="action-badge">Geopend</span></td><td><span class="badge badge-ok">OK</span></td></tr>
+<tr><td>13:22</td><td><a href="container-activiteit.html" class="container-link">C-301</a></td><td>Eindhoven</td><td>Daan Visser</td><td><span class="action-badge">Geopend</span></td><td><span class="badge badge-ok">OK</span></td></tr>
+<tr><td>12:45</td><td><a href="container-activiteit.html" class="container-link">C-178</a></td><td>Amersfoort</td><td>Nora Hendriks</td><td><span class="action-badge">Geopend</span></td><td><span class="badge badge-ok">OK</span></td></tr>
+<tr><td>12:10</td><td><a href="container-activiteit.html" class="container-link">C-422</a></td><td>Almere</td><td>Lisa Jansen</td><td><span class="action-badge">Geopend</span></td><td><span class="badge badge-ok">OK</span></td></tr>
 </tbody>
 </table>
 </div>
