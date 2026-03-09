@@ -66,6 +66,9 @@ table tbody tr:hover{background:#fafafa}
 .badge-green{background:#e8f5e9;color:#2e7d32}
 .badge-orange{background:#fff3e0;color:#e65100}
 .badge-red{background:#fdecea;color:#c62828}
+.badge-defect{background:#fce4ec;color:#880e4f}
+.badge-niet-geleegd{background:#e8eaf6;color:#283593}
+.badge-niet-locatie{background:#e0f2f1;color:#004d40}
 
 /* Links */
 a.container-link{color:#f5820d;text-decoration:none;font-weight:600}
@@ -195,11 +198,11 @@ a.container-link:hover{text-decoration:underline}
       <div class="card">
         <div class="section-title" style="display:flex;justify-content:space-between;align-items:center">Containers die aandacht nodig hebben <a href="aandachtspunten.html" class="arrow-btn" title="Aandachtspunten">&#8599;</a></div>
         <table>
-          <thead><tr><th>Container</th><th>Locatie</th><th>Laatste lediging</th><th>Door</th></tr></thead>
+          <thead><tr><th>Container</th><th>Locatie</th><th>Laatste lediging</th><th>Door</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td><a href="container-activiteit.html" class="container-link">C-204</a></td><td>Utrecht Centrum</td><td>3 dagen geleden</td><td>Iris Koster</td></tr>
-            <tr><td><a href="container-activiteit.html" class="container-link">C-118</a></td><td>Rotterdam Noord</td><td>4 dagen geleden</td><td>Lars van Dijk</td></tr>
-            <tr><td><a href="container-activiteit.html" class="container-link">C-332</a></td><td>Den Haag</td><td>5 dagen geleden</td><td>Daan van der Linden</td></tr>
+            <tr><td><a href="container-activiteit.html" class="container-link">C-204</a></td><td>Utrecht Centrum</td><td>3 dagen geleden</td><td>Iris Koster</td><td><span class="badge badge-orange">Waarschuwing</span></td></tr>
+            <tr><td><a href="container-activiteit.html" class="container-link">C-118</a></td><td>Rotterdam Noord</td><td>4 dagen geleden</td><td>Lars van Dijk</td><td><span class="badge badge-niet-locatie">Container niet op locatie</span></td></tr>
+            <tr><td><a href="container-activiteit.html" class="container-link">C-332</a></td><td>Den Haag</td><td>5 dagen geleden</td><td>Daan van der Linden</td><td><span class="badge badge-red">Achterstallig</span></td></tr>
           </tbody>
         </table>
       </div>
