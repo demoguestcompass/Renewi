@@ -51,11 +51,6 @@ tbody td{padding:10px 12px;font-size:13px;color:#333;border-bottom:1px solid #f0
 .badge-error{background:#fdecea;color:#c62828}
 .badge svg{width:12px;height:12px}
 
-/* Action buttons */
-.action-btns{display:flex;gap:4px}
-.action-btn{width:30px;height:30px;border-radius:6px;border:none;background:#3a3a3a;display:inline-flex;align-items:center;justify-content:center;cursor:default;transition:background 0.15s;pointer-events:none}
-.action-btn svg{width:14px;height:14px;color:#fff}
-
 /* Pagination */
 .pagination{display:flex;align-items:center;justify-content:flex-end;padding:14px 0;gap:4px}
 .page-btn{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 8px;border-radius:6px;border:1px solid #e0e0e0;background:#fff;color:#333;font-size:13px;cursor:default;transition:background 0.15s}
@@ -120,7 +115,6 @@ tbody td{padding:10px 12px;font-size:13px;color:#333;border-bottom:1px solid #f0
               <th>Gekoppelde container</th>
               <th>Containernaam</th>
               <th>Resultaat</th>
-              <th>Acties</th>
             </tr>
           </thead>
           <tbody>
@@ -130,12 +124,6 @@ tbody td{padding:10px 12px;font-size:13px;color:#333;border-bottom:1px solid #f0
               <td>C-045</td>
               <td>Container 45</td>
               <td><span class="badge badge-success"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Geslaagd</span></td>
-              <td>
-                <div class="action-btns">
-                  <button class="action-btn" title="Zoeken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
-                  <button class="action-btn" title="Bekijken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-                </div>
-              </td>
             </tr>
             <tr>
               <td><button class="expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button></td>
@@ -143,12 +131,6 @@ tbody td{padding:10px 12px;font-size:13px;color:#333;border-bottom:1px solid #f0
               <td>C-087</td>
               <td>Container 87</td>
               <td><span class="badge badge-success"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Geslaagd</span></td>
-              <td>
-                <div class="action-btns">
-                  <button class="action-btn" title="Zoeken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
-                  <button class="action-btn" title="Bekijken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-                </div>
-              </td>
             </tr>
             <tr>
               <td><button class="expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button></td>
@@ -156,12 +138,6 @@ tbody td{padding:10px 12px;font-size:13px;color:#333;border-bottom:1px solid #f0
               <td>C-204</td>
               <td>Container 204</td>
               <td><span class="badge badge-error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Fout</span></td>
-              <td>
-                <div class="action-btns">
-                  <button class="action-btn" title="Zoeken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
-                  <button class="action-btn" title="Bekijken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-                </div>
-              </td>
             </tr>
             <tr>
               <td><button class="expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button></td>
@@ -169,12 +145,6 @@ tbody td{padding:10px 12px;font-size:13px;color:#333;border-bottom:1px solid #f0
               <td>C-118</td>
               <td>Container 118</td>
               <td><span class="badge badge-error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Fout</span></td>
-              <td>
-                <div class="action-btns">
-                  <button class="action-btn" title="Zoeken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
-                  <button class="action-btn" title="Bekijken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-                </div>
-              </td>
             </tr>
             <tr>
               <td><button class="expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button></td>
@@ -182,12 +152,6 @@ tbody td{padding:10px 12px;font-size:13px;color:#333;border-bottom:1px solid #f0
               <td>C-233</td>
               <td>Container 233</td>
               <td><span class="badge badge-success"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Geslaagd</span></td>
-              <td>
-                <div class="action-btns">
-                  <button class="action-btn" title="Zoeken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
-                  <button class="action-btn" title="Bekijken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-                </div>
-              </td>
             </tr>
             <tr>
               <td><button class="expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button></td>
@@ -195,12 +159,6 @@ tbody td{padding:10px 12px;font-size:13px;color:#333;border-bottom:1px solid #f0
               <td>C-332</td>
               <td>Container 332</td>
               <td><span class="badge badge-error"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Fout</span></td>
-              <td>
-                <div class="action-btns">
-                  <button class="action-btn" title="Zoeken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
-                  <button class="action-btn" title="Bekijken"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-                </div>
-              </td>
             </tr>
           </tbody>
         </table>
