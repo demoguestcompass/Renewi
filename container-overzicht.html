@@ -174,7 +174,7 @@ a.container-link:hover{text-decoration:underline}
 <option value="Defect">Defect</option>
 <option value="SlotDefect">Slot Defect</option>
 <option value="NietGeledigd">Container niet geledigd</option>
-<option value="NietLocatie">Container niet op locatie</option>
+<option value="NietLocatie">Container verplaatst</option>
 </select>
 <select id="filterOpened" onchange="applyFilters()">
 <option value="All">Laatst geopend</option>
@@ -220,7 +220,7 @@ function applyFilters(){
     else if(status==='Defect'){showStatus=rowStatus==='Defect';}
     else if(status==='SlotDefect'){showStatus=rowStatus==='Slot Defect';}
     else if(status==='NietGeledigd'){showStatus=rowStatus==='Container niet geledigd';}
-    else if(status==='NietLocatie'){showStatus=rowStatus==='Container niet op locatie';}
+    else if(status==='NietLocatie'){showStatus=rowStatus==='Container verplaatst';}
     var showOpened=true;
     if(opened==='Today'){showOpened=rowOpened.indexOf('vandaag')!==-1;}
     else if(opened==='Older'){showOpened=rowOpened.indexOf('vandaag')===-1;}
