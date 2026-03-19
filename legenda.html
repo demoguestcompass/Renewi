@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renewi - Legenda</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,sans-serif;background:#ffffff;color:#1a1a1a;line-height:1.6}
+
+/* Sidebar */
+.sidebar{position:fixed;top:0;left:0;width:240px;height:100vh;background:#f7f7f7;border-right:1px solid #e5e5e5;display:flex;flex-direction:column;z-index:100;overflow-y:auto}
+.sidebar-logo{padding:24px 20px 28px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #e5e5e5}
+.sidebar-logo .logo-text{font-size:22px;font-weight:700;color:#333;letter-spacing:0.5px;text-transform:lowercase}
+.sidebar-nav{flex:1;padding:12px 0}
+.sidebar-nav a{display:flex;align-items:center;padding:10px 20px;color:#333;text-decoration:none;font-size:14px;border-left:3px solid transparent;transition:background 0.15s ease}
+.sidebar-nav a:hover{background:#ebebeb}
+.sidebar-nav a.active{border-left:3px solid #f5820d;background:#efefef;font-weight:600;color:#1a1a1a}
+
+/* Main layout */
+.main-content{margin-left:240px;min-height:100vh}
+
+/* Page header */
+.page-header{background:#fff;padding:20px 32px;border-bottom:1px solid #e5e5e5}
+.page-header h1{font-size:22px;font-weight:600;color:#1a1a1a}
+
+/* Content area */
+.content-area{max-width:1200px;margin:24px auto;padding:0 24px}
+
+.breadcrumb{font-size:13px;color:#888;margin-bottom:20px}
+.breadcrumb a{color:#888;text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+
+.card{background:#fff;border:1px solid #e5e5e5;border-radius:10px;padding:24px;margin-bottom:24px}
+.section-title{font-size:16px;font-weight:700;color:#1a1a1a;margin-bottom:12px}
+
+.intro-text{font-size:14px;color:#555;margin-bottom:24px;line-height:1.7}
+
+/* Badge styles (identical to other pages) */
+.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600}
+.badge-orange{background:#fff3e0;color:#e65100}
+.badge-red{background:#fdecea;color:#c62828}
+.badge-defect{background:#fce4ec;color:#880e4f}
+.badge-niet-geleegd{background:#e8eaf6;color:#283593}
+.badge-niet-locatie{background:#e0f2f1;color:#004d40}
+
+/* Legenda rows */
+.legenda-list{list-style:none;padding:0;margin:0}
+.legenda-item{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid #f0f0f0}
+.legenda-item:last-child{border-bottom:none}
+.legenda-badge{min-width:180px}
+.legenda-uitleg{font-size:14px;color:#333;line-height:1.6}
+
+/* Responsive */
+@media(max-width:768px){
+.sidebar{display:none}
+.main-content{margin-left:0}
+.mobile-menu-btn{display:flex}
+}
+
+/* Mobile hamburger */
+.mobile-menu-btn{display:none;position:fixed;top:16px;left:16px;z-index:200;background:#fff;border:1px solid #e5e5e5;border-radius:8px;width:40px;height:40px;align-items:center;justify-content:center;cursor:pointer;font-size:20px}
+</style>
+</head>
+<body>
+<button class="mobile-menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('show')">â°</button>
+<nav class="sidebar">
+<div class="sidebar-logo"><img src="renewi-logo.svg" alt="Renewi" style="height:96px;width:auto"></div>
+<div class="sidebar-nav">
+<a href="index.html">Dashboard</a>
+<a href="container-overzicht.html">Containeroverzicht</a>
+<a href="geleegd-vandaag.html">Vandaag geleegd</a>
+<a href="aandachtspunten.html">Aandachtspunten</a>
+<a href="laatste-activiteit.html">Laatste activiteit</a>
+<a href="container-activiteit.html">Containeractiviteit</a>
+<a href="gebruikers.html">Gebruikers</a>
+<a href="container-locatie.html">Containerlocaties</a>
+<a href="legenda.html" class="active">â¹ï¸ Legenda</a>
+</div>
+</nav>
+<div class="main-content">
+<div class="page-header">
+<h1>Legenda</h1>
+</div>
+<div class="content-area">
+<div class="breadcrumb"><a href="index.html">Dashboard</a> âº Legenda</div>
+<p class="intro-text">Overzicht van alle statussen en hun betekenis.</p>
+<div class="card">
+<div class="section-title">Statusbadges</div>
+<ul class="legenda-list">
+<li class="legenda-item">
+<div class="legenda-badge"><span class="badge badge-orange">Waarschuwing</span></div>
+<div class="legenda-uitleg">Container nadert de afgesproken ledigingstermijn.</div>
+</li>
+<li class="legenda-item">
+<div class="legenda-badge"><span class="badge badge-red">Achterstallig</span></div>
+<div class="legenda-uitleg">Container is niet geledigd binnen de afgesproken termijn.</div>
+</li>
+<li class="legenda-item">
+<div class="legenda-badge"><span class="badge badge-defect">Slot defect</span></div>
+<div class="legenda-uitleg">Storing geconstateerd door chauffeur, systeem of gebruiker.</div>
+</li>
+<li class="legenda-item">
+<div class="legenda-badge"><span class="badge badge-niet-geleegd">Container niet geledigd</span></div>
+<div class="legenda-uitleg">Container is aangeboden maar niet geledigd.</div>
+</li>
+<li class="legenda-item">
+<div class="legenda-badge"><span class="badge badge-niet-locatie">Container verplaatst</span></div>
+<div class="legenda-uitleg">Afwijking ten opzichte van geregistreerde locatie.</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>
